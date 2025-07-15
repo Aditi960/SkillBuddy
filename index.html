@@ -21,7 +21,7 @@
         <a href="login.html" class="login">Login here!</a>
       </div>
 
-      <form class="input-form">
+      <form id="signupForm" class="input-form">
         <div class="form-group">
           <label for="name">
             <img src="assets/name.svg" alt="Name Icon" class="form-icon">
@@ -85,5 +85,18 @@
     </div>
     
   </div>
+  <!-- Firebase Core -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+
+<!-- Firebase Authentication -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+
+<!-- Firestore -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-firestore-compat.js"></script>
+
+<!-- Your local Firebase config and Auth logic -->
+<script src="firebase.js"></script>
+<script src="auth.js"></script>  
+
 </body>
 </html>
