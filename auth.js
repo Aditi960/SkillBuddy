@@ -1,8 +1,6 @@
 console.log("🔥 Auth.js loaded");
 
-// Firebase Auth and Firestore instances
 const auth = firebase.auth();
-const db = firebase.firestore();
 
 window.addEventListener("DOMContentLoaded", () => {
   // LOGIN
@@ -21,7 +19,7 @@ window.addEventListener("DOMContentLoaded", () => {
 
       try {
         await auth.signInWithEmailAndPassword(email, password);
-        window.location.href = "dashboard.html"; // Immediate redirect
+        window.location.href = "dashboard.html";
       } catch (error) {
         alert("Login Failed: " + error.message);
       }
@@ -53,20 +51,17 @@ window.addEventListener("DOMContentLoaded", () => {
         const userCredential = await auth.createUserWithEmailAndPassword(email, password);
         const uid = userCredential.user.uid;
 
-       
         db.collection("users").doc(uid).set({
           name: name,
           email: email,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
-        })
-        .then(() => {
-          console.log("User stored in Firestore");
-        })
-        .catch((err) => {
-          console.warn("Firestore write failed:", err.message);
+        }).then(() => {
+          console.log("✅ User stored in Firestore");
+        }).catch((err) => {
+          console.warn("⚠️ Firestore write failed:", err.message);
         });
-        window.location.href = "dashboard.html";
 
+        window.location.href = "dashboard.html";
       } catch (err) {
         alert("Signup Failed: " + err.message);
       }
