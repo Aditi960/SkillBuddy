@@ -1,13 +1,16 @@
 console.log("🔥 Auth.js loaded");
 
-window.addEventListener("DOMContentLoaded", () => {
-  const auth = firebase.auth();
+// Firebase Auth and Firestore instances
+const auth = firebase.auth();
+const db = firebase.firestore();
 
+window.addEventListener("DOMContentLoaded", () => {
   // LOGIN
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
       e.preventDefault();
+
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
 
@@ -31,12 +34,12 @@ window.addEventListener("DOMContentLoaded", () => {
     signupForm.addEventListener("submit", async (e) => {
       e.preventDefault();
 
-      const name=document.getElementById("name").value.trim();
+      const name = document.getElementById("name").value.trim();
       const email = document.getElementById("email").value.trim();
       const password = document.getElementById("password").value;
       const repassword = document.getElementById("repassword").value;
 
-      if (!email || !password || !repassword) {
+      if (!name || !email || !password || !repassword) {
         alert("Please fill in all fields.");
         return;
       }
@@ -47,17 +50,23 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
-        const userCredential=await auth.createUserWithEmailAndPassword(email, password);
-        const uid=userCredential.user.uid;
+        const userCredential = await auth.createUserWithEmailAndPassword(email, password);
+        const uid = userCredential.user.uid;
 
-
-        await db.collection("users").doc(uid).set({
-          name:name,
-          email:email,
-          createdAt:firebase.firestore.FieldValue.serverTimestamp()
+       
+        db.collection("users").doc(uid).set({
+          name: name,
+          email: email,
+          createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        })
+        .then(() => {
+          console.log("User stored in Firestore");
+        })
+        .catch((err) => {
+          console.warn("Firestore write failed:", err.message);
         });
-        alert("Signup Successful!");
         window.location.href = "dashboard.html";
+
       } catch (err) {
         alert("Signup Failed: " + err.message);
       }
