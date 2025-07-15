@@ -19,9 +19,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
       try {
         await auth.signInWithEmailAndPassword(email, password);
-        console.log("✅ Login successful"); 
+        alert("✅ Login successful"); 
+        setTimeout(()=>{
         window.location.href = "dashboard.html"; 
-      } catch (error) {
+      },1000);
+     } catch (error) {
         alert("Login Failed: " + error.message);
       }
     });
@@ -59,11 +61,20 @@ window.addEventListener("DOMContentLoaded", () => {
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
 
-        console.log("User signed up and stored in Firestore"); 
-
-        window.location.href = "dashboard.html"; 
+        alert("Signup Successful !");
+        setTimeout(()=>{
+          window.location.href = "dashboard.html";},1000);
       } catch (err) {
+         if (err.code === "auth/email-already-in-use"){
+           alert( "Email already registered. Redirecting to login...");
+          setTimeout(() => {
+            window.location.href = "login.html";
+          }, 1000);
+        }
+        
+          else{
         alert("Signup Failed: " + err.message);
+          }
       }
     });
   }
