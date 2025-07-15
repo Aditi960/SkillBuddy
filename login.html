@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SkillBuddy</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="password.js"></script>
+
+</head>
+
+<body>
+  <div class="top-section">
+    
+    <!-- Left Column: Logo + Text + Form -->
+    <div class="left">
+      <img src="SkillBuddy.png" class="logo" alt="SkillBuddy Logo" />
+      
+      <div class="Signup layout topography">Login</div>
+
+      <div class="already-account layout topography">
+        Don't have an account?
+        <a href="index.html" class="login">Sign-up here!</a>
+      </div>
+
+
+      <form id="loginForm">
+
+        <div class="form-group">
+          <label for="email">
+            <img src="assets/email.svg" alt="Email Icon" class="form-icon">
+            Email
+          </label>
+          <input type="email" id="email" placeholder="Enter your Email here">
+        </div>
+
+        <div class="form-group">
+          <label for="password">
+            <img src="assets/password.svg" alt="Password Icon" class="form-icon">
+            Password
+          </label>
+          <input type="password" id="password" placeholder="Enter your Password here">
+        </div>
+        <a href="#" onclick="openModal()">Forget Password?</a>
+
+<div id="forgotModal" class="modal">
+    <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <h2>Forgot Password?</h2>
+        <p> Enter your registered email to reset your password: </p>
+        <input type="email" placeholder="Your email">
+        <button class="submit-b">Send Reset Link</button>
+    </div>
+</div>
+
+
+        <button type="submit" class="submit-btn">Submit</button>
+        </form>
+        <div class="sign-up-driver">
+        <img src="assets/dots.svg" alt="dot">
+        <img src="assets/dots.svg" alt="dot">
+        <img src="assets/dots.svg" alt="dot">
+        <h2 class="continue-with">Or Sign-up with</h2>
+        <img src="assets/dots.svg" alt="dot">
+        <img src="assets/dots.svg" alt="dot">
+        <img src="assets/dots.svg" alt="dot">
+        </div>
+
+
+
+        <div class="github-google">
+            <button class="auth-button">
+                <img src="assets/github.svg" alt="githublogo"/>Github
+                </button>
+                <button class="auth-button">
+                <img src="assets/google.svg" alt="googlelogo">Google
+                </button>
+        </div>
+      
+    </div>
+    
+
+    <!-- Right Column: SVG Image -->
+    <div class="right">
+      <img src="assets/login.svg" class="illustration" alt="Login Illustration">
+    </div>
+    
+  </div>
+
+<!-- Firebase SDKs -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+
+<!-- Your local scripts -->
+<script src="firebase.js"></script>  <!-- this sets up config -->
+<script src="auth.js"></script>     <!-- this does login logic -->
+<!-- Success Modal -->
+
+
+
+</body>
+</html>

@@ -1,0 +1,258 @@
+/* For importing fonts poppins and itim */
+
+@import url("https://fonts.googleapis.com/css2?family=Itim&family=Poppins:wght@300;400;500;600&display=swap");
+
+/* Page background and reset */
+body {
+  margin: 0;
+  padding: 0;
+  border: 1px solid #f0c2c2;
+  background: #b9bddb;
+  overflow-x: hidden;
+}
+
+/* Main 2-column layout */
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 40px;
+  flex-wrap: wrap; /* Important for mobile responsiveness */
+  gap: 20px;
+  padding: 35px 40px 40px 40px; /* Top Right Bottom Left */
+}
+
+/* Left side - logo and text */
+.left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 600px;
+  margin-top: -20px;
+}
+
+/* Right side - SVG illustration */
+.right {
+  flex-shrink: 0;
+}
+
+/* Logo image */
+.logo {
+  width: 400px;
+  height: auto;
+  margin-left: -20px;
+}
+
+/* SVG illustration image */
+.illustration {
+  width: 500px;
+  height: auto;
+  fill: #686dc8;
+  margin-top: 30px;
+  margin-right: 20px;
+}
+
+/* Sign-Up heading */
+.Signup.topography {
+  font-size: 40px;
+  font-family: Itim;
+  color: #000;
+  margin-left: 30px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Already have an account text */
+.already-account.topography {
+  font-family: Poppins;
+  font-size: 24px;
+  font-weight: 500;
+  color: #000;
+  margin-left: 30px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Login link */
+.login {
+  color: #001abf;
+  font-size: 21px;
+  font-family: Poppins;
+  text-decoration: underline;
+}
+.form-group {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.form-icon {
+  width: 24px;
+  height: 24px;
+}
+
+label {
+  width: 130px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  margin-left: 39px;
+  gap: 8px;
+}
+
+input {
+  flex: 1;
+  padding: 10px 15px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
+}
+input:focus {
+  border-color: #001abf; /* Change border color on focus */
+  outline: none; /* Remove default outline */
+  box-shadow: 0 0 5px rgba(0, 26, 191, 0.5); /* Add a subtle shadow */
+}
+.submit-btn {
+  margin-top: 20px;
+  padding: 12px 24px;
+  background-color: #686dc8;
+  color: white;
+  border: none;
+  border-radius: 25px;
+  font-size: 18px;
+  font-family: Poppins, sans-serif;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 191px;
+  align-self: inline-flex; /* aligns to the left inside flex form */
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.submit-btn:hover {
+  background-color: #5a61b5;
+  transform: scale(1.03);
+}
+
+.submit-btn:active {
+  transform: scale(0.98);
+}
+
+/* Login page  */
+
+/* dots and continue with */
+.sign-up-driver {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  margin-top: 18px;
+  margin-left: 30px;
+}
+
+.sign-up-driver img {
+  height: 40px;
+}
+
+.continue-with {
+  font-family: poppins;
+  font-size: 18px;
+  color: #333;
+  margin: 0;
+}
+
+/* Github */
+
+.github-google {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+.auth-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #8b96e4;
+  color: rgb(0, 0, 0);
+  border: none;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-family: Poppins, sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  width: 173px;
+  height: 37px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.auth-button:hover {
+  background-color: #7379b8;
+  transform: scale(1.03);
+}
+
+.auth-button:active {
+  transform: scale(0.98);
+}
+
+.forgotpassword{
+  margin-top: -20px;
+  display: flex;
+  justify-content: right;
+  font-family: Poppins,sans-serif;
+  color: #2231a1;
+}
+
+
+/* Modal */
+
+.modal{
+  display:none;
+  position: fixed;
+  z-index: 1000;
+  left:0;
+  top:0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content{
+  background-color: #fff;
+  margin: 10% auto;
+  padding:30px;
+  border:1px solid #ccc;
+  border-radius: 15px;
+  width: 400px;
+  box-shadow: 0px 8px 16px rgba(0,0,0,0.2);
+  font-family: 'Poppins',sans-serif;
+}
+
+.modal-content input{
+  width:100%;
+  padding:12px;
+  margin-top: 15px;
+  margin-bottom: 20px;
+  border-radius: 6px;
+  border:1px solid#ccc;
+  font-size: 16px;
+}
+
+.modal-content .submit-b{
+  padding: 12px 24px;
+  background-color: #686DC8;
+  color:white;
+  border:none;
+  border-radius: 25px;
+  font-size:16px;
+  cursor:pointer;
+  transition: background-color 0.3s ease;
+
+}
+.modal-content .submit-b{
+  background-color:#5a61b5;
+}
+
