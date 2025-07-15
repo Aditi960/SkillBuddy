@@ -1,6 +1,5 @@
-// firebase.js
+// ✅ Firebase initialization using compat (global) style
 
-// Initialize Firebase (this uses the global firebase object from CDN)
 const firebaseConfig = {
   apiKey: "AIzaSyAJITCIWvoT5tIXgJYkPofEvi9ngQ7yJ3s",
   authDomain: "skillbuddy-b7724.firebaseapp.com",
@@ -13,8 +12,5 @@ const firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-
-const db = firebase.firestore();
-
-
-window.db = db;
+const db = firebase.firestore(); // ✅ Firestore access using compat
+window.db = db; // ✅ Expose globally if needed by inline scripts

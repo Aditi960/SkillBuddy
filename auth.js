@@ -1,9 +1,10 @@
 console.log("🔥 Auth.js loaded");
 
-const auth = firebase.auth(); 
+const auth = firebase.auth();
 
 window.addEventListener("DOMContentLoaded", () => {
-  // LOGIN
+
+  // ✅ LOGIN
   const loginForm = document.getElementById("loginForm");
   if (loginForm) {
     loginForm.addEventListener("submit", async (e) => {
@@ -19,17 +20,17 @@ window.addEventListener("DOMContentLoaded", () => {
 
       try {
         await auth.signInWithEmailAndPassword(email, password);
-        alert("✅ Login successful"); 
-        setTimeout(()=>{
-        window.location.href = "dashboard.html"; 
-      },1000);
-     } catch (error) {
+        alert("✅ Login successful");
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1000);
+      } catch (error) {
         alert("Login Failed: " + error.message);
       }
     });
   }
 
-  // SIGNUP
+  // ✅ SIGNUP
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
     signupForm.addEventListener("submit", async (e) => {
@@ -51,31 +52,35 @@ window.addEventListener("DOMContentLoaded", () => {
       }
 
       try {
+        // 👤 Create new user
         const userCredential = await auth.createUserWithEmailAndPassword(email, password);
-        const uid = userCredential.user.uid; 
+        const uid = userCredential.user.uid;
 
-
+        // 🗂️ Store user details in Firestore
         await db.collection("users").doc(uid).set({
           name: name,
           email: email,
           createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
 
-        alert("Signup Successful !");
-        setTimeout(()=>{
-          window.location.href = "dashboard.html";},1000);
+        // ✅ Show message and redirect to dashboard
+        alert("✅ Signup Successful!");
+        setTimeout(() => {
+          window.location.href = "dashboard.html";
+        }, 1000);
+
       } catch (err) {
-         if (err.code === "auth/email-already-in-use"){
-           alert( "Email already registered. Redirecting to login...");
+        // ⚠️ If user already exists
+        if (err.code === "auth/email-already-in-use") {
+          alert("⚠️ Email already registered. Please login.");
           setTimeout(() => {
             window.location.href = "login.html";
           }, 1000);
+        } else {
+          alert("Signup Failed: " + err.message);
         }
-        
-          else{
-        alert("Signup Failed: " + err.message);
-          }
       }
     });
   }
+
 });
