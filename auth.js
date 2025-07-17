@@ -73,9 +73,7 @@ window.addEventListener("DOMContentLoaded", () => {
         // ⚠️ If user already exists
         if (err.code === "auth/email-already-in-use") {
           alert("⚠️ Email already registered. Please login.");
-          setTimeout(() => {
-            window.location.href = "login.html";
-          }, 1000);
+          window.location.href = "login.html"; 
         } else {
           alert("Signup Failed: " + err.message);
         }
